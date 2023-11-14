@@ -244,7 +244,6 @@ class signUpScreen(App):
 
         #Enter button
         enterButton = Button(halign='center', size_hint=(None, None), background_color=(0, 0, 0, 1))
-        enterButton.bind(on_press=lambda instance, value: self.switchScreen(instance, value, "initialScreen"))
         enterButton.size = (200,40)
         enterButton.pos_hint = {'center_x': 0.5, 'top': 0.18}
 
@@ -285,9 +284,6 @@ class signUpScreen(App):
         if screen == "loginChoice":
             self.stop()
             loginScreen().run()
-        elif screen == "initialScreen":
-            self.stop()
-            initialScreen().run()
 
 # Sign up screen
 class loginScreen(App):
@@ -298,13 +294,39 @@ class loginScreen(App):
         # Implement the green background
         background = Background()
 
-        # Test label
-        t = Label(text='Testing 2', markup= True, font_size=120, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
-        t.size_hint = (None, None)
-        t.pos_hint = {'center_x': 0.5, 'top': 0.875}
+        # Welcome Back label
+        welcomeBackLabel = Label(text='Create an Account', markup= True, font_size=80, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
+        welcomeBackLabel.size_hint = (None, None)
+        welcomeBackLabel.pos_hint = {'center_x': 0.5, 'top': 0.95}
+
+        # Email address input
+        emailLabel = Label(text='Email', markup= True, font_size=30, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
+        emailLabel.size_hint = (None, None)
+        emailLabel.pos_hint = {'center_x': 0.5, 'top': 0.75}
+
+        emailInput = TextInput(hint_text='e.g. John.Smith@kysu.edu', halign='center', multiline=False, font_size=18)
+        emailInput.size_hint = (None, None)
+        emailInput.size = (400, 30)
+        emailInput.pos_hint = {'center_x': 0.5, 'top': 0.67}
+        emailInput.padding = [0,4]
+
+        # Password input
+        passwordLabel = Label(text='Password', markup= True, font_size=30, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
+        passwordLabel.size_hint = (None, None)
+        passwordLabel.pos_hint = {'center_x': 0.5, 'top': 0.65}
+
+        passwordInput = TextInput(hint_text='e.g. JohnSmith123!', halign='center', multiline=False, font_size=18)
+        passwordInput.size_hint = (None, None)
+        passwordInput.size = (400, 30)
+        passwordInput.pos_hint = {'center_x': 0.5, 'top': 0.57}
+        passwordInput.padding = [0,4]
 
         layout.add_widget(background)
-        layout.add_widget(t)
+        layout.add_widget(welcomeBackLabel)
+        layout.add_widget(emailLabel)
+        layout.add_widget(emailInput)
+        layout.add_widget(passwordLabel)
+        layout.add_widget(passwordInput)
 
         return layout
 
