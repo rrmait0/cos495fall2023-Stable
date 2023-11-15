@@ -220,8 +220,17 @@ class signUpScreen(App):
         btn.bind(on_release=lambda btn: dropdown.select(btn.text))
         btn2 = Button(text="What was the name of your mother?", size_hint_y=None, height=30)
         btn2.bind(on_release=lambda btn: dropdown.select(btn2.text))
+        btn3 = Button(text="What is your hometown?", size_hint_y=None, height=30)
+        btn3.bind(on_release=lambda btn: dropdown.select(btn2.text))
+        btn4 = Button(text="What is your favorite color?", size_hint_y=None, height=30)
+        btn4.bind(on_release=lambda btn: dropdown.select(btn2.text))
+        btn5 = Button(text="What high school did you go to?", size_hint_y=None, height=30)
+        btn5.bind(on_release=lambda btn: dropdown.select(btn2.text))
         dropdown.add_widget(btn)
         dropdown.add_widget(btn2)
+        dropdown.add_widget(btn3)
+        dropdown.add_widget(btn4)
+        dropdown.add_widget(btn5)
 
         # Create Main button
         mainButton = Button(text='-Select One-', size_hint=(None, None))
