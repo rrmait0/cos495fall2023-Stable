@@ -1,5 +1,6 @@
 from kivy.config import Config
 
+#Sets window size and restricts resizing
 Config.set('graphics', 'width', '800')
 Config.set('graphics', 'height', '700')
 Config.set('graphics', 'resizable', False)
@@ -48,6 +49,7 @@ class Background(FloatLayout):
         self.rect.size = self.size
         self.rect.pos = self.pos
 
+#Initial Screen
 class initialScreen(App):
     def build(self):
         # Create the main layout as a FloatLayout
@@ -65,7 +67,7 @@ class initialScreen(App):
         titleLabel.size_hint = (None, None)
         titleLabel.pos_hint = {'center_x': 0.55, 'top': 0.875}
 
-        # Creates a label and binds to the switch function
+        # Creates signup and login labels and binds to the switch function
         signUpText = Label(text='New here?', font_size=40, font_name="Comic", color=(1, 0.851, 0.106, 1))
         signUpText.size_hint = (None, None)
         signUpText.pos_hint = {'center_x': 0.4, 'top': 0.4}
@@ -252,7 +254,7 @@ class signUpScreen(App):
         enterLabel.pos_hint = {'center_x': 0.5, 'top': 0.217}
 
         #Redirect to login page
-        redirectToLogin = Label(text='[u][ref=sign up]Have an account?[/ref][/u]', markup=True, font_size=20, font_name="Comic", color=(1, 0.851, 0.106, 1))
+        redirectToLogin = Label(text='[u][ref=login]Have an account?[/ref][/u]', markup=True, font_size=20, font_name="Comic", color=(1, 0.851, 0.106, 1))
         redirectToLogin.bind(on_ref_press=lambda instance, value: self.switchScreen(instance, value, "loginChoice"))
         redirectToLogin.size_hint = (None, None)
         redirectToLogin.pos_hint = {'center_x': 0.9, 'top': 0.10}
@@ -295,7 +297,7 @@ class loginScreen(App):
         background = Background()
 
         # Welcome Back label
-        welcomeBackLabel = Label(text='Create an Account', markup= True, font_size=80, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
+        welcomeBackLabel = Label(text='Welcome Back!', markup= True, font_size=80, font_name= "Comic", color=(1, 0.851, 0.106, 1))  # Gold color
         welcomeBackLabel.size_hint = (None, None)
         welcomeBackLabel.pos_hint = {'center_x': 0.5, 'top': 0.95}
 
@@ -321,14 +323,45 @@ class loginScreen(App):
         passwordInput.pos_hint = {'center_x': 0.5, 'top': 0.57}
         passwordInput.padding = [0,4]
 
+        #Redirect to forgot password page
+        forgotPass = Label(text='[u]Forgot password?[/u]', markup=True, font_size=20, font_name="Comic", color=(1, 0.851, 0.106, 1))
+        forgotPass.size_hint = (None, None)
+        forgotPass.pos_hint = {'center_x': 0.5, 'top': 0.56}
+
+        #Enter button to go to dashboard
+        loginButton = Button(halign='center', size_hint=(None, None), background_color=(0, 0, 0, 1))
+        loginButton.size = (200,40)
+        loginButton.pos_hint = {'center_x': 0.5, 'top': 0.38}
+
+        #Creates text for button
+        loginLabel = Label(text='Log In', markup = True, font_name = "Comic", font_size = 30, valign='middle', size_hint=(None, None), color=(1, 0.851, 0.106, 1))
+        loginLabel.pos_hint = {'center_x': 0.5, 'top': 0.419}
+
+        #Redirect to Sign Up page
+        redirectToSignup = Label(text='[u][ref=sign up]Need to create an account?[/ref][/u]', markup=True, font_size=20, font_name="Comic", color=(1, 0.851, 0.106, 1))
+        redirectToSignup.bind(on_ref_press=lambda instance, value: self.switchScreen(instance, value, "signUpChoice"))
+        redirectToSignup.size_hint = (None, None)
+        redirectToSignup.pos_hint = {'center_x': 0.5, 'top': 0.35}
+
+
+        #Adds widgets to layout
         layout.add_widget(background)
         layout.add_widget(welcomeBackLabel)
         layout.add_widget(emailLabel)
         layout.add_widget(emailInput)
         layout.add_widget(passwordLabel)
         layout.add_widget(passwordInput)
+        layout.add_widget(forgotPass)
+        layout.add_widget(loginButton)
+        layout.add_widget(loginLabel)
+        layout.add_widget(redirectToSignup)
 
         return layout
+    
+    def switchScreen(self, instance, value, screen):
+        if screen == "signUpChoice":
+            self.stop()
+            signUpScreen().run()
 
 # Starts application
 if __name__ == '__main__':
