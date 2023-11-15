@@ -365,6 +365,24 @@ class loginScreen(App):
             self.stop()
             signUpScreen().run()
 
+#Forgot Password screen
+class forgotPass(App):
+    def build(self):
+        # Create the main layout as a FloatLayout
+        layout = FloatLayout()
+
+        # Implement the green background
+        background = Background()
+
+
+
+
+
+
+        layout.add_widget(background)
+
+        return layout
+
 # Starts application
 if __name__ == '__main__':
     initialScreen().run()
