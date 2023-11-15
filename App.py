@@ -216,10 +216,12 @@ class signUpScreen(App):
         dropdown = DropDown()
 
         # Add items to the dropdown
-        for index in range(1,6):
-            btn = Button(text='Security Question %d' % index, size_hint_y=None, height=30)
-            btn.bind(on_release=lambda btn: dropdown.select(btn.text))
-            dropdown.add_widget(btn)
+        btn = Button(text="What was the name of your first pet?", size_hint_y=None, height=30)
+        btn.bind(on_release=lambda btn: dropdown.select(btn.text))
+        btn2 = Button(text="What was the name of your mother?", size_hint_y=None, height=30)
+        btn2.bind(on_release=lambda btn: dropdown.select(btn2.text))
+        dropdown.add_widget(btn)
+        dropdown.add_widget(btn2)
 
         # Create Main button
         mainButton = Button(text='-Select One-', size_hint=(None, None))
