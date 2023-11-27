@@ -261,7 +261,7 @@ class signUpScreen(App):
         enterButton.pos_hint = {'center_x': 0.5, 'top': 0.18}
 
         #Creates text for button
-        enterLabel = Label(text='Enter', markup = True, font_name = "Comic", font_size = 30, valign='middle', size_hint=(None, None), color=(1, 0.851, 0.106, 1))
+        enterLabel = Label(text='[ref=enter]Enter[/ref]', markup = True, font_name = "Comic", font_size = 30, valign='middle', size_hint=(None, None), color=(1, 0.851, 0.106, 1))
         enterLabel.pos_hint = {'center_x': 0.5, 'top': 0.217}
 
         #Redirect to login page
@@ -290,6 +290,22 @@ class signUpScreen(App):
         layout.add_widget(enterButton)
         layout.add_widget(enterLabel)
         layout.add_widget(redirectToLogin)
+
+        def saveInfo(instance, value):
+            userInfo = open("UserInformation", "w")
+            firstName = firstNameInput.text
+            lastName = lastNameInput.text
+            email = emailInput.text
+            password = passwordInput.text
+            securityAnswer = securityAnswerInput.text
+            userInfo.write(f"{firstName}\n")
+            userInfo.write(f"{lastName}\n")
+            userInfo.write(f"{email}\n")
+            userInfo.write(f"{password}\n")
+            userInfo.write(f"{securityAnswer}")
+            self.stop()
+
+        enterLabel.bind(on_ref_press= saveInfo)
 
         return layout
     
