@@ -402,7 +402,6 @@ class loginScreen(App):
 
         loginLabel.bind(on_ref_press= checkInfo)
 
-
         return layout
     
     def switchScreen(self, instance, value, screen):
@@ -427,6 +426,16 @@ class forgotPass(App):
         layout.add_widget(background)
 
         return layout
+
+#Dashboard Screen
+class Dashboard(App):
+    def build(self):
+        # Create the main layout as a FloatLayout
+        layout = FloatLayout()
+
+        # Implement the green background
+        background = Background()
+
 
 # Starts application
 if __name__ == '__main__':
