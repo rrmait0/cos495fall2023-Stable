@@ -315,7 +315,7 @@ class signUpScreen(App):
             self.stop()
             loginScreen().run()
 
-# Sign up screen
+# Log in screen
 class loginScreen(App):
     def build(self):
         # Create the main layout as a FloatLayout
