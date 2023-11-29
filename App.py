@@ -391,13 +391,13 @@ class loginScreen(App):
         def checkInfo(instance, value):
             with open("UserInformation", 'r') as file:
                 lines = file.readlines()
-            correctEmail = lines[2]
-            correctPassword = lines[3]
+            correctEmail = lines[2].strip()
+            correctPassword = lines[3].strip()
             userEmail = emailInput.text
             userPassword = passwordInput.text
             if (userEmail == correctEmail) and (userPassword == correctPassword):
                 self.stop()
-            else:
+            elif (userEmail != correctEmail) and (userPassword != correctPassword):
                 layout.add_widget(errorLabel)
 
         loginLabel.bind(on_ref_press= checkInfo)
