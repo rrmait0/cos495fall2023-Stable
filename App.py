@@ -291,6 +291,7 @@ class signUpScreen(App):
         layout.add_widget(enterLabel)
         layout.add_widget(redirectToLogin)
 
+        #Saves User info to text file
         def saveInfo(instance, value):
             userInfo = open("UserInformation", "w")
             firstName = firstNameInput.text
@@ -361,7 +362,7 @@ class loginScreen(App):
         loginButton.pos_hint = {'center_x': 0.5, 'top': 0.38}
 
         #Creates text for button
-        loginLabel = Label(text='Log In', markup = True, font_name = "Comic", font_size = 30, valign='middle', size_hint=(None, None), color=(1, 0.851, 0.106, 1))
+        loginLabel = Label(text='[ref=log in]Log In[/ref]', markup = True, font_name = "Comic", font_size = 30, valign='middle', size_hint=(None, None), color=(1, 0.851, 0.106, 1))
         loginLabel.pos_hint = {'center_x': 0.5, 'top': 0.419}
 
         #Redirect to Sign Up page
@@ -370,6 +371,9 @@ class loginScreen(App):
         redirectToSignup.size_hint = (None, None)
         redirectToSignup.pos_hint = {'center_x': 0.5, 'top': 0.35}
 
+        #Error for incorrect credentials
+        errorLabel = Label(text='Incorrect credentials, please try again', font_name = 'Comic', font_size = 30, valign='middle', size_hint=(None,None), color=(1, 255, 0, 1))
+        errorLabel.pos_hint = {'center_x': 0.5, 'top': 0.5}
 
         #Adds widgets to layout
         layout.add_widget(background)
@@ -382,6 +386,22 @@ class loginScreen(App):
         layout.add_widget(loginButton)
         layout.add_widget(loginLabel)
         layout.add_widget(redirectToSignup)
+
+        #Checks text file for user info
+        def checkInfo(instance, value):
+            with open("UserInformation", 'r') as file:
+                lines = file.readlines()
+            correctEmail = lines[2]
+            correctPassword = lines[3]
+            userEmail = emailInput.text
+            userPassword = passwordInput.text
+            if (userEmail == correctEmail) and (userPassword == correctPassword):
+                self.stop()
+            else:
+                layout.add_widget(errorLabel)
+
+        loginLabel.bind(on_ref_press= checkInfo)
+
 
         return layout
     
