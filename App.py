@@ -448,7 +448,7 @@ class Dashboard(App):
         appointmentsLabel = Label(text='[u]Your Appointments[/u]', markup= True, font_size=40, font_name= "Comic", color=(1, 0.851, 0.106, 1))
         productsLabel = Label(text='[u]Your Products[/u]', markup= True, font_size=40, font_name= "Comic", color=(1, 0.851, 0.106, 1))
         appointmentsLabel.pos_hint = {'center_x': 0.5, 'top': 1.3}
-        productsLabel.pos_hint = {'center_x': 0.5, 'top': 0.8}
+        productsLabel.pos_hint = {'center_x': 0.5, 'top': 1.0}
 
         #Adds widgets to layout
         layout.add_widget(background)
