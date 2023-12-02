@@ -397,6 +397,7 @@ class loginScreen(App):
             userPassword = passwordInput.text
             if (userEmail == correctEmail) and (userPassword == correctPassword):
                 self.stop()
+                Dashboard().run()
             elif (userEmail != correctEmail) and (userPassword != correctPassword):
                 layout.add_widget(errorLabel)
 
@@ -412,17 +413,17 @@ class loginScreen(App):
 #Forgot Password screen
 class forgotPass(App):
     def build(self):
-        # Create the main layout as a FloatLayout
+        #Create the main layout as a FloatLayout
         layout = FloatLayout()
 
-        # Implement the green background
+        #Implement the green background
         background = Background()
 
 
 
 
 
-
+        #Adds widgets to layout
         layout.add_widget(background)
 
         return layout
@@ -430,11 +431,35 @@ class forgotPass(App):
 #Dashboard Screen
 class Dashboard(App):
     def build(self):
-        # Create the main layout as a FloatLayout
+        #Create the main layout as a FloatLayout
         layout = FloatLayout()
 
-        # Implement the green background
+        #Implement the green background
         background = Background()
+
+        box1 = Button(text='For you', size_hint=(None, None), size=(535, 50), color=(1, 0.851, 0.106, 1))
+        box1.pos_hint = {'center_x': 0.25, 'top': 1.0}
+        box2 = Button(text='Trending', size_hint=(None, None), size=(535, 50), color=(1, 0.851, 0.106, 1))
+        box2.pos_hint = {'center_x': 0.75, 'top': 1.0}
+        box1Border = Button(size_hint=(None, None), size=(550, 55), background_color = (0,0,0,1))
+        box1Border.pos_hint = {'center_x': 0.25, 'top': 1.0}
+        box2Border = Button(size_hint=(None, None), size=(550, 55), background_color = (0,0,0,1))
+        box2Border.pos_hint = {'center_x': 0.75, 'top': 1.0}
+        appointmentsLabel = Label(text='[u]Your Appointments[/u]', markup= True, font_size=40, font_name= "Comic", color=(1, 0.851, 0.106, 1))
+        productsLabel = Label(text='[u]Your Products[/u]', markup= True, font_size=40, font_name= "Comic", color=(1, 0.851, 0.106, 1))
+        appointmentsLabel.pos_hint = {'center_x': 0.5, 'top': 1.3}
+        productsLabel.pos_hint = {'center_x': 0.5, 'top': 0.8}
+
+        #Adds widgets to layout
+        layout.add_widget(background)
+        layout.add_widget(box1Border)
+        layout.add_widget(box1)
+        layout.add_widget(box2Border)
+        layout.add_widget(box2)
+        layout.add_widget(appointmentsLabel)
+        layout.add_widget(productsLabel)
+
+        return layout
 
 
 # Starts application
